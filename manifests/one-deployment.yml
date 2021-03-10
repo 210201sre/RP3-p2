@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: one-deployment
-  namespace: RP3
+  namespace: rp3
   labels: 
     app: one
 spec:
