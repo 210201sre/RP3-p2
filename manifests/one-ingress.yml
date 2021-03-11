@@ -11,7 +11,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /online-store/?(.*)
+      - path: /online-store-rp3/?(.*)
         backend:
           serviceName: one-service
           servicePort: 8080
