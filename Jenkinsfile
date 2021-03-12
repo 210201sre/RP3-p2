@@ -19,7 +19,7 @@ pipeline{
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'P2-Jenkins') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins-token') {
                         app.push('latest')
                         // Double quotes will interpolate environment variables in Groovy
                         app.push("${env.BUILD_NUMBER}")
