@@ -21,7 +21,7 @@ pipeline{
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins-token') {
                         app.push('latest')
-                        // Double quotes will interpolate environment variables in Groovy
+                        
                         app.push("${env.BUILD_NUMBER}")
                         app.push("${env.GIT_COMMIT}")
                     }
