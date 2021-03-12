@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME - "speedy1096/project-two"
+        DOCKER_IMAGE_NAME = "speedy1096/project-two"
         MAVEN_IMAGE_NAME =  "project-one:0.0.1-SNAPSHOT"
     }
     stages{
