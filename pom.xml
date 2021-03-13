@@ -34,7 +34,7 @@
 		<!-- We don't have to unit test our models, because there is no logic -->
 		<sonar.exclusions>src/**/models/**/*, src/**/controllers/**/*,
 			src/**/repositories/**/*,src/**/advice/**/*,src/**/annonations/**/*,src/**/errorhandling/**/*,
-			src/**/exceptions/**/*,src/**/filters/**/*</sonar.exclusions>
+			src/**/exceptions/**/*,src/**/filters/**/*,src/main/java/com/revature/ProjectOneApplication.java</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -120,6 +120,7 @@
 						<exclude>**/errorhandling/**</exclude>
 						<exclude>**/exceptions/**</exclude>
 						<exclude>**/filters/**</exclude>
+						<exclude>src/main/java/com/revature/ProjectOneApplication.java</exclude>
 					</excludes>
 				</configuration>
 				<executions>
