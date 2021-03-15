@@ -37,7 +37,7 @@ pipeline{
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins-token') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-jenkins-token-RP3') {
                         app.push('latest')
                         
                         app.push("${env.BUILD_NUMBER}")
