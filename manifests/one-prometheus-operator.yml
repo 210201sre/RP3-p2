@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: one
+  namespace: rp3
+  labels:
+    app: one
+    release: prometheus
+    team: sre
+spec:
+  selector:
+    matchLabels:
+      app: one
+  namespaceSelector:
+      matchNames: 
+      - rp3
+  endpoints:
+    - port: http
+      path: /actuator/prometheus
+      interval: 10s
