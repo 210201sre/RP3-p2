@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: one-service
   namespace: rp3
+  labels:
+    app: one
+    monitoring: enabled
 spec:
   selector:
     app: one
