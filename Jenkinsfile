@@ -1,3 +1,4 @@
+def JDK_NAME = env.JDK_NAME ?: 'jdk_11_latest'
 pipeline{
     agent {
         kubernetes {
@@ -49,6 +50,10 @@ pipeline{
               emptyDir: {}
           """
         }
+    }
+
+    tools {
+        jdk JDK_NAME
     }
 
     environment {
