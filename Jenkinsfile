@@ -16,7 +16,7 @@ pipeline{
               command:
               - cat
               tty: true
-              workingDir: /var/lib/docker
+              workingDir: /home/jenkins
               volumeMounts:
               - name: docker-sock
                 mountPath: /var/run/docker.sock 
