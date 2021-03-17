@@ -11,12 +11,15 @@ pipeline{
             component: ci
           spec:
             containers:
-            - name: doutd-daemon
+            - name: jnlp
               image: odavid/jenkins-jnlp-slave
+              command:
+              - cat
+              tty: true
               workingDir: /var/lib/docker
               volumeMounts:
-              - name: docker-storage
-                mountPath: /var/lib/docker
+              - name: docker-sock
+                mountPath: /var/run/docker.sock 
               resources:
                 requests:
                   memory: "300Mi"
@@ -30,8 +33,9 @@ pipeline{
               - cat
               tty: true
             volumes:
-            - name: docker-storage
-              emptyDir: {}
+            - name: docker-sock
+              hostPath:
+                path: /var/run/docker.sock 
           """
         }
     }
