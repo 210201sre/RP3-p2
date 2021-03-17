@@ -17,6 +17,9 @@ pipeline{
               - cat
               tty: true
               workingDir: /home/jenkins/agent
+              env:
+              - name: JENKINS_TUNNEL
+                value: jenkins-agent:50000
               volumeMounts:
               - name: docker-sock
                 mountPath: /var/run/docker.sock 
