@@ -1,4 +1,3 @@
-def JDK_NAME = env.JDK_NAME ?: 'jdk_11_latest'
 pipeline{
     agent {
         kubernetes {
@@ -12,24 +11,22 @@ pipeline{
             component: ci
           spec:
             containers:
-            - name: jnlp
-              image: ikenoxamos/jenkins-slave:latest
-              workingDir: /home/jenkins
-              env:
-              - name: DOCKER_HOST
-                value: tcp://localhost:2375
-              resources:
-                requests:
-                  memory: "500Mi"
-                  cpu: "0.3"
-                limits:
-                  memory: "800Mi"
-                  cpu: "0.5"
-            - name: dind-daemon
-              image: docker:18-dind
+            // - name: jnlp
+            //   image: ikenoxamos/jenkins-slave:latest
+            //   workingDir: /home/jenkins
+            //   env:git
+            //   - name: DOCKER_HOST
+            //     value: tcp://localhost:2375
+            //   resources:
+            //     requests:   
+            //       memory: "500Mi"
+            //       cpu: "0.3"
+            //     limits:
+            //       memory: "800Mi"
+            //       cpu: "0.5"
+            - name: doutd-daemon
+              image: odavid/jenkins-jnlp-slave
               workingDir: /var/lib/docker
-              securityContext:
-                privileged: true
               volumeMounts:
               - name: docker-storage
                 mountPath: /var/lib/docker
@@ -50,10 +47,6 @@ pipeline{
               emptyDir: {}
           """
         }
-    }
-
-    tools {
-        jdk JDK_NAME
     }
 
     environment {
