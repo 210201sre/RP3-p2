@@ -18,8 +18,10 @@ pipeline{
               tty: true
               workingDir: /home/jenkins/agent
               env:
-              - name: JENKINS_TUNNEL
-                value: jenkins-agent:50000
+              - name: JENKINS_AGENT_NAME
+                value:  build-agent-tzvv7-0gfz9
+              - name: JENKINS_AGENT_WORKDIR
+                value: /home/jenkins/agent
               volumeMounts:
               - name: docker-sock
                 mountPath: /var/run/docker.sock 
