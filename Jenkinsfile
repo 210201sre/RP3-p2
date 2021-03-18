@@ -12,10 +12,7 @@ pipeline{
           spec:
             containers:
             - name: jnlp
-              image: odavid/jenkins-jnlp-slave
-              command:
-              - cat
-              tty: true
+              image: odavid/jenkins-jnlp-slave:jdk11
               volumeMounts:
               - name: docker-sock
                 mountPath: /var/run/docker.sock 
