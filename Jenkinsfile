@@ -44,8 +44,7 @@ pipeline{
         stage('Build'){
             steps{
                 sh 'chmod +x mvnw'
-                sh 'docker build -t $MAVEN_IMAGE_NAME .'
-                sh 'docker tag $MAVEN_IMAGE_NAME $DOCKER_IMAGE_NAME'
+                sh 'docker build -t $DOCKER_IMAGE_NAME .'
                 script {
                     app = docker.image(DOCKER_IMAGE_NAME)
                 }
