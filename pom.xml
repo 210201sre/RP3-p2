@@ -12,9 +12,9 @@
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.revature</groupId>
-	<artifactId>project-one</artifactId>
+	<artifactId>project-two</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>project-one</name>
+	<name>project-two</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
