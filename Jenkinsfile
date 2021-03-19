@@ -43,7 +43,6 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                sh 'chmod +x mvnw'
                 sh 'docker build -t $DOCKER_IMAGE_NAME .'
                 script {
                     app = docker.image(DOCKER_IMAGE_NAME)
@@ -53,6 +52,7 @@ pipeline{
 
         stage('Sonar Quality Analysis') {
             steps {
+                sh 'chmod +x mvnw'
                 withSonarQubeEnv(credentialsId: 'sonar-token-2', installationName: 'sonarcloud') {
                     sh './mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
                 }
