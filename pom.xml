@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.3</version>
 		<relativePath />
-		 <!-- lookup parent from repository -->
+		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.revature</groupId>
 	<artifactId>project-one</artifactId>
@@ -22,7 +22,7 @@
 		<sonar.projectKey>210201sre_RP3-p2</sonar.projectKey>
 		<sonar.organization>210201sre</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		
+
 		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
 		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
@@ -106,6 +106,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<layers>
+						<enabled>true</enabled>
+					</layers>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
