@@ -42,7 +42,6 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                docker.build(DOCKER_IMAGE_NAME)
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
                 }
