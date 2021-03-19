@@ -3,7 +3,7 @@ FROM maven:3.6.3-openjdk-8 as builder
 COPY pom.xml pom.xml
 COPY src/ src/
 
-RUN ./mvnw clean package
+RUN mvn clean package
 
 ARG JAR_FILE=target/project-one-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
