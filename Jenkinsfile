@@ -38,14 +38,13 @@ pipeline{
 
     environment {
         DOCKER_IMAGE_NAME = "speedy1096/project-two"
-        MAVEN_IMAGE_NAME =  "project-one"
     }
     stages{
         stage('Build'){
             steps{
-                sh 'docker build -t $DOCKER_IMAGE_NAME .'
+                docker.build(DOCKER_IMAGE_NAME)
                 script {
-                    app = docker.image(DOCKER_IMAGE_NAME)
+                    app = docker.build(DOCKER_IMAGE_NAME)
                 }
             }
         }
