@@ -38,12 +38,13 @@ pipeline{
 
     environment {
         DOCKER_IMAGE_NAME = "speedy1096/project-two"
-        MAVEN_IMAGE_NAME =  "project-one:0.0.1-SNAPSHOT"
+        MAVEN_IMAGE_NAME =  "project-one"
     }
     stages{
         stage('Build'){
             steps{
-                sh 'chmod +x mvnw && ./mvnw spring-boot:build-image'
+                sh 'chmod +x mvnw'
+                sh 'docker build -t $MAVEN_IMAGE_NAME .'
                 sh 'docker tag $MAVEN_IMAGE_NAME $DOCKER_IMAGE_NAME'
                 script {
                     app = docker.image(DOCKER_IMAGE_NAME)
