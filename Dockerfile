@@ -1,17 +1,17 @@
-FROM adoptopenjdk:11-jre-hotspot as builder
+FROM maven:3.6.3-openjdk-8 as builder
 WORKDIR /application
 COPY pom.xml pom.xml
 COPY src/ src/
 RUN mvn clean package
 ARG JAR_FILE=target/*.jar
 
-FROM adoptopenjdk:11-jre-hotspot as runner
+FROM maven:3.6.3-openjdk-8 as runner
 WORKDIR /application
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 
-FROM adoptopenjdk:11-jre-hotspot
+FROM maven:3.6.3-openjdk-8
 WORKDIR /application
 COPY --from=runner /application/dependencies/ ./
 COPY --from=runner /application/snapshot-dependencies/ ./
