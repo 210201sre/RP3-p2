@@ -2,7 +2,7 @@ FROM maven:3.6.3-openjdk-8 as builder
 WORKDIR /application
 COPY pom.xml pom.xml
 COPY src/ src/
-RUN mvn clean package
+# RUN mvn clean package
 ARG JAR_FILE=target/*.jar
 
 FROM maven:3.6.3-openjdk-8 as runner
