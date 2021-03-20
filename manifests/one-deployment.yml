@@ -4,16 +4,16 @@ metadata:
   name: online-store
   namespace: rp3
   labels: 
-    app: one
+    app: online-store
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: one
+      app: online-store
   template:
     metadata:
       labels:
-        app: one
+        app: online-store
     spec:
       volumes:
         - name: config

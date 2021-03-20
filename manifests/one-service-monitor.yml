@@ -4,17 +4,17 @@ metadata:
   name: online-store
   namespace: rp3
   labels:
-    app: one
+    app: online-store
     release: prometheus
     team: sre
-spec:  
-  endpoints:
-  - port: http
-    path: /actuator/prometheus
-    interval: 10s
+spec:
+  selector:
+    matchLabels:
+      app: online-store
   namespaceSelector:
     matchNames: 
     - rp3
-  selector:
-    matchLabels:
-      app: one
+  endpoints:
+  - port: http
+    path: p1/actuator/prometheus
+    interval: 10s
