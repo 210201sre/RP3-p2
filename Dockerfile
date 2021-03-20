@@ -3,7 +3,7 @@ WORKDIR /application
 COPY pom.xml pom.xml
 COPY src/ src/
 RUN mvn clean package
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=target/project-two-0.0.1-SNAPSHOT.jar
 
 #FROM maven:3.6.3-openjdk-11 as runner
 #WORKDIR /application

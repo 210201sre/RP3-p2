@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-project-two,com.revature,ProjectOneApplication,8,0,0,0,3,0,2,0,2,0
-project-two,com.revature.services,UserService,84,0,4,0,21,0,7,0,5,0
-project-two,com.revature.services,ItemService,21,0,0,0,6,0,3,0,3,0
-project-two,com.revature.services,CartService,100,0,4,0,21,0,6,0,4,0
+project-one,com.revature,ProjectOneApplication,8,0,0,0,3,0,2,0,2,0
+project-one,com.revature.services,UserService,84,0,4,0,21,0,7,0,5,0
+project-one,com.revature.services,ItemService,21,0,0,0,6,0,3,0,3,0
+project-one,com.revature.services,CartService,100,0,4,0,21,0,6,0,4,0
