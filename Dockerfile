@@ -1,7 +1,11 @@
 FROM maven:3.6.3-openjdk-11 as builder
 WORKDIR /application
+COPY mvnw mvnw
+COPY mvnw.cmd mvnw.cmd
+COPY .mvn .mvn
 COPY pom.xml pom.xml
 COPY src/ src/
+RUN chmod +x mvnw
 RUN mvn clean package
 ARG JAR_FILE=target/*.jar
 
