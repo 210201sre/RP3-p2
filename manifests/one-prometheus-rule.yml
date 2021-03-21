@@ -1,4 +1,4 @@
-apiVersion: "monitoring.coreos.com/v1"
+apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: online-store-prometheus-rules
@@ -7,6 +7,7 @@ metadata:
     app: online-store
     job: online-store
     release: prometheus
+    team: sre
 spec:
   groups:
   - name: online-store-SLOs-http_request_duration_seconds
