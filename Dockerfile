@@ -7,7 +7,7 @@ ARG JAR_FILE=target/*.jar
 
 FROM maven:3.6.3-openjdk-11 as runner
 WORKDIR /application
-COPY ${JAR_FILE} application.jar
+COPY --from=builder /application/${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
 
