@@ -6,7 +6,7 @@ COPY .mvn .mvn
 COPY pom.xml pom.xml
 COPY src/ src/
 RUN chmod +x mvnw
-RUN mvn clean package
+RUN ./mvnw clean package
 ARG JAR_FILE=target/*.jar
 
 FROM maven:3.6.3-openjdk-11 as runner
