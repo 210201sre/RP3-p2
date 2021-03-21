@@ -13,10 +13,10 @@ RUN java -Djarmode=layertools -jar application.jar extract
 
 FROM maven:3.6.3-openjdk-11
 WORKDIR /application
-COPY --from=runner /application/dependencies/ ./
-COPY --from=runner /application/snapshot-dependencies/ ./
-COPY --from=runner /application/spring-boot-loader/ ./
-COPY --from=runner /application/application/ ./
+COPY --from=builder /application/dependencies/ ./
+COPY --from=builder /application/snapshot-dependencies/ ./
+COPY --from=builder /application/spring-boot-loader/ ./
+COPY --from=builder /application/application/ ./
 EXPOSE 8090
 
 ENTRYPOINT [ "java", "org.springframework.boot.loader.JarLauncher" ]
