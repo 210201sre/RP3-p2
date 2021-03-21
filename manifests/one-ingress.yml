@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: one-ingress
+  name: online-store
   namespace: rp3
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -13,5 +13,5 @@ spec:
       paths:
       - path: /online-store-rp3/?(.*)
         backend:
-          serviceName: one-service
+          serviceName: online-store
           servicePort: 8080

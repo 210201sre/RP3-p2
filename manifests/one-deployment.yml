@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: one-deployment
+  name: online-store
   namespace: rp3
   labels: 
     app: one
@@ -18,7 +18,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: fluent-conf-christopher-gonzalez
+            name: fluent-conf
       containers:
         - name: fluentd
           ports: 

@@ -19,4 +19,7 @@ COPY --from=builder /application/spring-boot-loader/ ./
 COPY --from=builder /application/application/ ./
 EXPOSE 8090
 
+
+#COPY --from=builder target/project-one-0.0.1-SNAPSHOT.jar app.jar
+
 ENTRYPOINT [ "java", "org.springframework.boot.loader.JarLauncher" ]
