@@ -13,6 +13,9 @@ import com.revature.models.Cart;
 import com.revature.repositories.CartDAO;
 import com.revature.repositories.OrderDAO;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
+
 @Service
 public class CartService {
 
@@ -25,6 +28,27 @@ public class CartService {
 	
 	@Autowired
 	private OrderDAO orderDAO;
+	
+	private Counter pendingOrderCounter;
+    private Counter completedOrderCounter;
+    
+	private MeterRegistry meterRegistry;
+	@Autowired
+	public CartService(MeterRegistry meterRegistry) {
+		this.meterRegistry = meterRegistry;
+		initOrderCounter();
+	}
+	
+	private void initOrderCounter() {
+		pendingOrderCounter = Counter.builder("place.order")
+									.tag("status", "pending")
+									.description("The number of total orders being placed")
+									.register(meterRegistry);
+		completedOrderCounter = Counter.builder("place.order")
+									.tag("status", "complete")
+									.description("The number of pending orders successfully placed")
+									.register(meterRegistry);
+	}
 	
 	public void addItemToCart(int itemId, int userId) {
 		MDC.put(event, "Add item to cart");
@@ -41,12 +65,14 @@ public class CartService {
 		if (userCart.isEmpty()) {
 			throw new CartEmptyException();
 		}
+		pendingOrderCounter.increment();
 		for (Cart item : userCart) {
 			cartDAO.deleteById(item.getId());
 			orderDAO.insertToOrders(item.getItem_id(), userId);
 			
 			log.info("user# " + userId + " ordered item# " + item.getId());
 		}
+		completedOrderCounter.increment();
 		userCart.clear();
 	}
 }
