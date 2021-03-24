@@ -43,11 +43,11 @@ public class CartService {
 		pendingOrderCounter = Counter.builder("place.order")
 									.tag("status", "pending")
 									.description("The number of total orders being placed")
-									.register(this.meterRegistry);
+									.register(meterRegistry);
 		completedOrderCounter = Counter.builder("place.order")
 									.tag("status", "complete")
 									.description("The number of pending orders successfully placed")
-									.register(this.meterRegistry);
+									.register(meterRegistry);
 	}
 	
 	public void addItemToCart(int itemId, int userId) {
