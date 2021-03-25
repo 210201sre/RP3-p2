@@ -92,8 +92,53 @@ pipeline{
                         app.push("${env.GIT_COMMIT}")
                     }
                 }
+                container('kubectl') {
+                      withKubeConfig([credentialsId: 'kubeconfig']) {
+                          sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
+                      }
+                    }
             }
         }
+
+        stage('Canary Deployment') {
+          environment {
+            CANARY_REPLICAS = 1
+          }
+          steps {
+            kubernetesDeloy(
+               kubeconfigId: 'kubeconfig',
+                    // the ID of the kubeconfig credentials 
+                    enableConfigSubstitution: true,
+                    configs: 'manifests/canary-deployment.yml'
+            )
+          }
+        }
+
+        stage('Production Deployment') {
+          environment {
+            CANARY_REPLICAS = 0
+          } 
+          input {
+            message "Deploy to Production?"
+            ok "Yes"
+          }
+          steps {
+            echo "Confirmed production has been deloyed"
+
+          // Scale Down the canary
+          kubernetesDeploy(
+                      kubeconfigId: 'kubeconfig',
+                      enableConfigSubstitution: true,
+                      configs: 'manifests/canary-deployment.yml'
+                  )
+
+          // Scale up the new production version
+          kubernetesDeploy(
+                      kubeconfigId: 'kubeconfig',
+                      enableConfigSubstitution: true,
+                      configs: 'manifests/production-deployment.yml'
+                  )
+          }
     }
     
 }
