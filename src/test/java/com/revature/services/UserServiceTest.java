@@ -25,16 +25,20 @@ class UserServiceTest {
 	@Mock
 	UserDAO userDAO;
 	
-	
+//	@BeforeAll
+//	public void init( ) {
+//		// register user for login here
+//	}
 	@Test
 	public void registerUserTest() {
 		User u = new User(1, "jdoe@gmail.com", "password", null);
 		
 		userService.register(u);
 				
-		verify(userDAO, times(1)).insertToUsers(u.getEmail(), u.getPassword());;
+		verify(userDAO, times(1)).insertToUsers(u.getEmail(), u.getPassword());
 		
 	}
+
 	
 //	@Test
 //	public void loginUserTest() {
