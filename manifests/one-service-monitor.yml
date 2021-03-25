@@ -4,13 +4,13 @@ metadata:
   name: online-store
   namespace: rp3
   labels:
-    app: online-store
+    app: one
     release: prometheus
     team: sre
 spec:
   selector:
     matchLabels:
-      app: online-store
+      app: one
   namespaceSelector:
     matchNames: 
     - rp3

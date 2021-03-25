@@ -4,7 +4,7 @@ metadata:
   name: online-store-prometheus-rules
   namespace: rp3
   labels:
-    app: online-store
+    app: one
     job: online-store
     release: prometheus
     team: sre
@@ -14,7 +14,7 @@ spec:
     rules:
     - alert: OnlineStore_LatencyBudgetBurn
       annotations:
-        message: 'High requests latency budget burn for job=online-store,latency=1 (current value: {{ $value }})'
+        message: 'High requests latency budget burn for job=one,latency=1 (current value: {{ $value }})'
       expr: |
         (
           latencytarget:http_request_duration_seconds:rate1h{job="online-store",latency="1"} > (14.4*(1-0.800000))
@@ -28,14 +28,14 @@ spec:
           latencytarget:http_request_duration_seconds:rate30m{job="online-store",latency="1"} > (6*(1-0.800000))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
         severity: page
     - alert: OnlineStore_LatencyBudgetBurn
       annotations:
-        message: 'High requests latency budget burn for job=online-store,latency=1 (current value: {{ $value }})'
+        message: 'High requests latency budget burn for job=one,latency=1 (current value: {{ $value }})'
       expr: |
         (
           latencytarget:http_request_duration_seconds:rate1d{job="online-store",latency="1"} > (3*(1-0.800000))
@@ -49,7 +49,7 @@ spec:
           latencytarget:http_request_duration_seconds:rate6h{job="online-store",latency="1"} > (1.000000)
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -61,7 +61,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[5m]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -74,7 +74,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[30m]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -86,7 +86,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[1h]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -98,7 +98,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[2h]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -110,7 +110,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[6h]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -122,7 +122,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[1d]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -134,7 +134,7 @@ spec:
           sum(rate(http_request_duration_seconds_count{job="online-store"}[3d]))
         )
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         latency: "1"
@@ -144,53 +144,53 @@ spec:
     rules:
     - alert: OnlineStore_ErrorBudgetBurn
       annotations:
-        message: 'High error budget burn for job=online-store (current value: {{ $value }})'
+        message: 'High error budget burn for job=one (current value: {{ $value }})'
       expr: |
         sum(onlineStore_http_server_requests_seconds_count:burnrate5m{job="online-store"}) > (14.40 * (1-0.95000))
         and
         sum(onlineStore_http_server_requests_seconds_count:burnrate1h{job="online-store"}) > (14.40 * (1-0.95000))
       for: 2m
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         severity: page
     - alert: OnlineStore_ErrorBudgetBurn
       annotations:
-        message: 'High error budget burn for job=online-store (current value: {{ $value }})'
+        message: 'High error budget burn for job=one (current value: {{ $value }})'
       expr: |
         sum(onlineStore_http_server_requests_seconds_count:burnrate30m{job="online-store"}) > (6.00 * (1-0.95000))
         and
         sum(onlineStore_http_server_requests_seconds_count:burnrate6h{job="online-store"}) > (6.00 * (1-0.95000))
       for: 15m
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         severity: page
     - alert: OnlineStore_ErrorBudgetBurn
       annotations:
-        message: 'High error budget burn for job=online-store (current value: {{ $value }})'
+        message: 'High error budget burn for job=one (current value: {{ $value }})'
       expr: |
         sum(onlineStore_http_server_requests_seconds_count:burnrate2h{job="online-store"}) > (3.00 * (1-0.95000))
         and
         sum(onlineStore_http_server_requests_seconds_count:burnrate1d{job="online-store"}) > (3.00 * (1-0.95000))
       for: 1h
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         severity: ticket
     - alert: OnlineStore_ErrorBudgetBurn
       annotations:
-        message: 'High error budget burn for job=online-store (current value: {{ $value }})'
+        message: 'High error budget burn for job=one (current value: {{ $value }})'
       expr: |
         sum(onlineStore_http_server_requests_seconds_count:burnrate6h{job="online-store"}) > (1.00 * (1-0.95000))
         and
         sum(onlineStore_http_server_requests_seconds_count:burnrate3d{job="online-store"}) > (1.00 * (1-0.95000))
       for: 3h
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
         severity: ticket
@@ -199,7 +199,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[1d]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate1d
@@ -208,7 +208,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[1h]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate1h
@@ -217,7 +217,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[2h]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate2h
@@ -226,7 +226,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[30m]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate30m
@@ -235,7 +235,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[3d]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate3d
@@ -244,7 +244,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[5m]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate5m
@@ -253,7 +253,7 @@ spec:
         /
         sum(rate(http_server_requests_seconds_count{job="online-store"}[6h]))
       labels:
-        app: online-store
+        app: one
         job: online-store
         release: prometheus
       record: onlineStore_http_server_requests_seconds_count:burnrate6h

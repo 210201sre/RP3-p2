@@ -4,14 +4,14 @@ metadata:
   name: online-store
   namespace: rp3
   labels:
-    app: online-store
+    app: one
   annotations:
     prometheus.io/path: /actuator/prometheus
     prometheus.io/port: "8080"
     prometheus.io/scrape: "true"
 spec:
   selector:
-    app: online-store
+    app: one
   ports:
   - name: http
     protocol: TCP
