@@ -64,6 +64,9 @@ pipeline{
         }
 
         stage('Sonar Quality Analysis') {
+          tools{
+            jdk "jdk11"
+          }
             steps {
                 sh 'chmod +x mvnw'
                 withSonarQubeEnv(credentialsId: 'sonar-token-2', installationName: 'sonarcloud') {
