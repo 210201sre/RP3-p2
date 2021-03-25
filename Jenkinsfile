@@ -103,8 +103,8 @@ pipeline{
             container('kubectl') {
                       withKubeConfig([credentialsId: 'kubeconfig']) {
                           sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
-                          sh "kubectl set image deployment/online-store-canary p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
-                          sh "kubectl scale --replicas=$CANARY_REPLICAS rs/online-store-canary"
+                          sh "kubectl -n rp3 set image deployment/online-store-canary p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
+                          sh "kubectl scale deployment.v1.apps/online-store-canary --replicas=$CANARY_REPLICAS -n rp3"
                       }
                     }
           }
@@ -125,7 +125,7 @@ pipeline{
           container('kubectl') {
                       withKubeConfig([credentialsId: 'kubeconfig']) {
                           sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
-                          sh "kubectl scale --replicas=$CANARY_REPLICAS rs/online-store-canary"
+                          sh "kubectl scale deployment.v1.apps/online-store-canary --replicas=$CANARY_REPLICAS -n rp3"
                       }
                     }
 
@@ -133,7 +133,7 @@ pipeline{
           container('kubectl') {
                       withKubeConfig([credentialsId: 'kubeconfig']) {
                           sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
-                          sh "kubectl set image deployment/online-store-production p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
+                          sh "kubectl -n rp3 set image deployment/online-store-production p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
                       }
                     }
           }
