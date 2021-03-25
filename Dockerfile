@@ -1,4 +1,4 @@
-FROM maven:3.6.3-openjdk-8 as builder
+FROM maven:3.6.3-openjdk-11 as builder
 # WORKDIR /application
 COPY pom.xml pom.xml
 COPY src/ src/
@@ -11,7 +11,7 @@ ARG JAR_FILE=target/*.jar
 # RUN java -Djarmode=layertools -jar application.jar extract
 
 
-FROM maven:3.6.3-openjdk-8
+FROM maven:3.6.3-openjdk-11
 # WORKDIR /application
 # COPY --from=builder /application/dependencies/ ./
 # COPY --from=builder /application/snapshot-dependencies/ ./
