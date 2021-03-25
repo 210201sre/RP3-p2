@@ -94,6 +94,49 @@ pipeline{
                 }
             }
         }
+
+        stage('Canary Deployment') {
+          environment {
+            CANARY_REPLICAS = 1
+          }
+          steps {
+            container('kubectl') {
+                      withKubeConfig([credentialsId: 'kubeconfig']) {
+                          sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
+                          sh "kubectl -n rp3 set image deployment/online-store-canary p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
+                          sh "kubectl scale deployment.v1.apps/online-store-canary --replicas=$CANARY_REPLICAS -n rp3"
+                      }
+                    }
+          }
+        }
+
+        stage('Production Deployment') {
+          environment {
+            CANARY_REPLICAS = 0
+          } 
+          input {
+            message "Deploy to Production?"
+            ok "Yes"
+          }
+          steps {
+            echo "Confirmed production has been deloyed"
+
+          // Scale Down the canary
+          container('kubectl') {
+                      withKubeConfig([credentialsId: 'kubeconfig']) {
+                          sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
+                          sh "kubectl scale deployment.v1.apps/online-store-canary --replicas=$CANARY_REPLICAS -n rp3"
+                      }
+                    }
+
+          // Scale up the new production version
+          container('kubectl') {
+                      withKubeConfig([credentialsId: 'kubeconfig']) {
+                          sh "aws eks update-kubeconfig --name matt-oberlies-sre-943"
+                          sh "kubectl -n rp3 set image deployment/online-store-production p-one=$DOCKER_IMAGE_NAME:$GIT_COMMIT"
+                      }
+                    }
+          }
     }
     
 }
