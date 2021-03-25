@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-store-canary
+  namespace: rp3 
+  labels: 
+    app: one
+spec: 
+  replicas: $CANARY_REPLICAS
+  selector:
+    matchLabels:
+      app: one
+      track: canary 
+  template:
+    metadata:
+      labels:
+        app: one
+        track: canary 
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: fluent-conf
+      containers:
+        - name: fluentd
+          ports: 
+          - containerPort: 24224
+          image: grafana/fluent-plugin-loki:latest
+          env:
+          - name: LOKI_URL
+            value: http://loki:3100
+          volumeMounts:
+          - name: config
+            mountPath: /fluentd/etc/fluent.conf
+            subPath: fluent.conf
+        - name: p-one
+          image: $DOCKER_IMAGE_NAME:$GIT_COMMIT
+          ports:
+          - containerPort: 8080
+          env:
+          - name: DB_URL
+            valueFrom: 
+              secretKeyRef:
+                name: chris-credentials
+                key: url
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: chris-credentials
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: chris-credentials
+                key: password
+          
