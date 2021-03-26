@@ -510,3 +510,18 @@ com.revature.exceptions.LoginUserFailedException: null
 2021-03-25 18:15:06.647 [event=Login, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
 2021-03-25 18:15:06.650 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
 2021-03-25 18:15:06.651 [event=Login, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
+2021-03-25 19:36:44.347 [event=Register]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.442 [event=Retrieve all users]  INFO   --- [           main] com.revature.services.UserService        : Starting == Looking for users
+2021-03-25 19:36:46.470 [event=Register]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.471 [event=Login]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
+2021-03-25 19:36:46.475 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.476 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.479 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.483 [event=Login, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
+2021-03-25 19:36:46.488 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.489 [event=Login, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
+2021-03-25 19:36:46.493 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.493 [event=Login, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == Logging in user
+2021-03-25 19:36:46.496 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:36:46.496 [event=Register, userId=1]  INFO   --- [           main] com.revature.services.UserService        : Starting == registering a new user
+2021-03-25 19:46:04.261 [event=Add item to cart]  INFO   --- [           main] com.revature.services.CartService        : Starting == Adding item 1 to cart

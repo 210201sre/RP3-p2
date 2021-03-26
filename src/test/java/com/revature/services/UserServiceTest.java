@@ -23,6 +23,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 
 import com.revature.exceptions.LoginUserFailedException;
+import com.revature.exceptions.RegisterUserFailedException;
 import com.revature.models.User;
 import com.revature.repositories.UserDAO;
 
@@ -51,6 +52,22 @@ class UserServiceTest {
 		verify(userDAO, times(1)).insertToUsers(u.getEmail(), u.getPassword());
 		
 	}
+	
+	@Test
+	public void registerUserTest2() {
+		User u = new User(1, "jdoe@gmail.com", "password", null);
+		
+		try {
+					
+			lenient().when(userDAO.findByEmail("jdoe@gmail.com")).thenReturn(Optional.of(u));
+					
+			userService.register(u);
+		} catch(RegisterUserFailedException e) {
+			assertEquals(RegisterUserFailedException.class, e.getClass());
+		}
+		
+	}
+	
 
 	
 	@Test

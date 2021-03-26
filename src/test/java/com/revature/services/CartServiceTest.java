@@ -19,37 +19,31 @@ import com.revature.repositories.CartDAO;
 import com.revature.repositories.OrderDAO;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 
 @ExtendWith(MockitoExtension.class)
 public class CartServiceTest {
 
-	@Mock
-	MeterRegistry meterRegistery = Mockito.mock(MeterRegistry.class);
+	@InjectMocks
+	CartService service = new CartService(new SimpleMeterRegistry());
+
 	
 	@Mock
-	private CartService cartService;
-	
-	@Mock
-	CartDAO cartDAO;
+	private CartDAO cartDAO;
 
 	@Mock
 	OrderDAO orderDAO;
 	
-	@BeforeEach
-	void init() {
-		this.cartService = new CartService(meterRegistery);
+	@Test
+	public void addItemToCartTest() {
+		
+		User u = new User(1, "jdoe@gmail.com", "password", null);
+		Item i = new Item(1, "chair", 10.0);
+		
+		service.addItemToCart(i.getId(), u.getId());
+		
+		verify(cartDAO, times(1)).insertToCarts(1, 1);
 	}
-	
-//	@Test
-//	public void addItemToCartTest() {
-//		
-//		User u = new User(1, "jdoe@gmail.com", "password", null);
-//		Item i = new Item(1, "chair", 10.0);
-//		
-//		cartService.addItemToCart(i.getId(), u.getId());
-//		
-//		verify(cartDAO, times(1)).insertToCarts(1, 1);
-//	}
 	
 //	@Test
 //	public void addItemToOrderTest() {
