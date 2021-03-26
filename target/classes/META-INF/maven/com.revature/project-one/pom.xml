@@ -25,7 +25,7 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 		<coverage.reports.dir>target/coverage-reports</coverage.reports.dir>
-		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.coverage.jacoco.xmlReportPaths>target/coverage-reports/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
 		<!-- This configuration excludes certain packages from being analyzed -->
 		<!-- This is helpful because Project2 only has requirements for test coverage 
