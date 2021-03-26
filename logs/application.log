@@ -387,3 +387,7 @@ com.revature.exceptions.LoginUserFailedException: null
 	at java.lang.Thread.run(Unknown Source)
 
 [2m2021-03-11 15:20:07.535[0;39m [event=login error, duration=2111] [32m INFO[0;39m [35m22076[0;39m [2m---[0;39m [2m[nio-8080-exec-7][0;39m [36mcom.revature.filters.DurationFilter     [0;39m [2m:[0;39m Request has finished took 2111 milli secs to process
+[2m2021-03-23 22:03:35.592[0;39m [] [32m INFO[0;39m [35m15880[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mcom.revature.ProjectOneApplication      [0;39m [2m:[0;39m Starting ProjectOneApplication using Java 1.8.0_281 on DESKTOP-G2GRHTT with PID 15880 (C:\Users\cgon5\Documents\210201sre-spring\project-two\target\classes started by cgon5 in C:\Users\cgon5\Documents\210201sre-spring\project-two)
+[2m2021-03-23 22:03:37.652[0;39m [] [32m INFO[0;39m [35m15880[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mcom.revature.ProjectOneApplication      [0;39m [2m:[0;39m No active profile set, falling back to default profiles: default
+[2m2021-03-23 22:03:45.889[0;39m [] [32m INFO[0;39m [35m15880[0;39m [2m---[0;39m [2m[  restartedMain][0;39m [36mcom.revature.ProjectOneApplication      [0;39m [2m:[0;39m Started ProjectOneApplication in 12.917 seconds (JVM running for 13.769)
+[2m2021-03-23 22:03:51.551[0;39m [duration=618] [32m INFO[0;39m [35m15880[0;39m [2m---[0;39m [2m[nio-8080-exec-1][0;39m [36mcom.revature.filters.DurationFilter     [0;39m [2m:[0;39m Request has finished took 618 milli secs to process

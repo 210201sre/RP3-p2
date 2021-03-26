@@ -1,24 +1,25 @@
-FROM maven:3.6.3-openjdk-8 as builder
-
+FROM maven:3.6.3-openjdk-11 as builder
+# WORKDIR /application
 COPY pom.xml pom.xml
 COPY src/ src/
-
 RUN mvn clean package
+ARG JAR_FILE=target/*.jar
 
-ARG JAR_FILE=target/project-one-0.0.1-SNAPSHOT.jar
-COPY ${JAR_FILE} app.jar
+# FROM maven:3.6.3-openjdk-11 as runner
+# WORKDIR /application
+# COPY ${JAR_FILE} application.jar
+# RUN java -Djarmode=layertools -jar application.jar extract
 
-RUN java -Djarmode=layertools -jar app.jar extract
 
-#FROM java:8 as runner
-FROM maven:3.6.3-openjdk-8
-COPY --from=builder dependencies/ ./
-COPY --from=builder snapshot-dependencies/ ./
-COPY --from=builder spring-boot-loader/ ./
-COPY --from=builder application/ ./
+FROM maven:3.6.3-openjdk-11
+# WORKDIR /application
+# COPY --from=builder /application/dependencies/ ./
+# COPY --from=builder /application/snapshot-dependencies/ ./
+# COPY --from=builder /application/spring-boot-loader/ ./
+# COPY --from=builder /application/application/ ./
+EXPOSE 8080
 
-EXPOSE 8090
 
-#COPY --from=builder target/project-one-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=builder target/project-one-0.0.1-SNAPSHOT.jar app.jar
 
-ENTRYPOINT [ "java", "org.springframework.boot.loader.JarLauncher" ]
+ENTRYPOINT [ "java", "-jar","app.jar"]
