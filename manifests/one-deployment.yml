@@ -40,7 +40,7 @@ spec:
             valueFrom: 
               secretKeyRef:
                 name: chris-credentials
-                key: urlk
+                key: url
           - name: DB_USERNAME
             valueFrom:
               secretKeyRef:
