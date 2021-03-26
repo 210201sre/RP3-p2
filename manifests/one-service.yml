@@ -5,7 +5,10 @@ metadata:
   namespace: rp3
   labels:
     app: one
-    monitoring: enabled
+  annotations:
+    prometheus.io/path: /actuator/prometheus
+    prometheus.io/port: "8080"
+    prometheus.io/scrape: "true"
 spec:
   selector:
     app: one
