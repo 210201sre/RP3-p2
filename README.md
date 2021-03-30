@@ -21,7 +21,7 @@ users can buy are stored in the Items table. User's carts are stored in the Cart
 * Kubernetes
 * AWS
 
-## How to set up / get started using it
+## Getting Started
 * Create or change namespace christopher-gonzalez
 * Create a configmap using the file in the config folder inside of the manifest folder
 * Apply yaml files in manifest in a kubernetes cluster with an ingress object
@@ -65,6 +65,11 @@ users can buy are stored in the Items table. User's carts are stored in the Cart
 * Get Users: GET http://a62d60162057149549617360016d2e38-542496291.us-east-1.elb.amazonaws.com/online-store/p1/users
 * Get Items: GET http://a62d60162057149549617360016d2e38-542496291.us-east-1.elb.amazonaws.com/online-store/p1/items
 * Add Item to Cart: POST http://a62d60162057149549617360016d2e38-542496291.us-east-1.elb.amazonaws.com/online-store/p1/items
+
+## Setting Up Prometheus
+- Create prometheus operator using the manifests. Modify namespace as needed, then run the following:
+	- `kubeclt apply -f manifests/one-service-monitor.yml`
+	- `kubectl apply -f manifests/one-prometheus-rule.yml`
 
 ## Contributors
 * Christopher Gonzalez
