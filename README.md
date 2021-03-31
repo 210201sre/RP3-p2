@@ -2,8 +2,7 @@
 project 2 for Revature Party of 3
 
 ## Description
-Set up the backend for an online store to buy items. Users can register and login to add items to their cart. Then they can place orders. Registered users are are stored in the Users table. Items that 
-users can buy are stored in the Items table. User's carts are stored in the Cart table. Users order's are stored in the Orders table.
+The Free Store application manages the backend service of an online store. Free Store is a RESTful Spring boot web application where users can register for accounts, login, logout, and order items. Leveraged  Prometheus to create custom metrics, monitor SLOs, and alerting. A canary deployment strategy was implemented in Jenkins to deploy to Kubernetes.
 
 ## Features Implemented
 * Register - register new users
@@ -14,7 +13,8 @@ users can buy are stored in the Items table. User's carts are stored in the Cart
 
 ## Technologies Used
 * Spring Framework: Spring Boot, Spring Data
-* Loki
+* JUnit
+* Prometheus
 * Grafana
 * Fluentd
 * DBeaver
